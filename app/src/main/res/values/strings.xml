@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">YANO HESALATÖR </string>
+    <string-array name="types">
+        <item>AA</item>
+        <item>BA</item>
+        <item>BB</item>
+        <item>CB</item>
+        <item>CC</item>
+        <item>DC</item>
+        <item>DD</item>
+        <item>FD</item>
+        <item>FF</item>
+    </string-array>
+</resources>
