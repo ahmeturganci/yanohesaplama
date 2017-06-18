@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,10 +17,13 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.LinkedList;
+
 public class HesaplamaActivity extends AppCompatActivity {
     private LinearLayout parentLinearLayout;
     Button btnHesapla;
     EditText[] etler;
+    LinkedList<Ders> dersler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,74 +36,31 @@ public class HesaplamaActivity extends AppCompatActivity {
         int gelenDS = veri.getInt("DersSay");
         Toast.makeText(getApplicationContext(), gelenDS +" asd", Toast.LENGTH_SHORT).show();
 
-        for(int l=0; l<=gelenDS; l++){
+        dersler = new LinkedList<Ders>();
+        for(int l=0; l<gelenDS; l++){
             //sorunu şuraya birdaha yazsana kanka gitmediysen
             //sıkıntı şu ben dinamik olarak nesne bileşen üretiyorum ancak bunlardan değer alaıyorum hesap işi için alamam gerek
-            onAddField();
+            dersler.add(new Ders(this,parentLinearLayout));
         }
-
         btnHesapla.setOnClickListener(new View.OnClickListener() {
             @Override
+
             public void onClick(View v) {
-
-
+                float krediler = 0f;
+                float puanlar = 0f;
+                for (int i = 0; i < dersler.size(); i++) {
+                    Ders d = dersler.get(i);
+                    krediler += d.kredi;
+                    puanlar += d.dersPuani;
+                    //katsayı çarpı kredi bunların toplamı / tüm kredilerin toplamı )
+                    //toplam[katsayı * kredi]  / toplam[krediler]
+                }
+                float sonuc = puanlar/krediler;
+                Toast.makeText(getApplicationContext(), sonuc +"  SONUÇ YANO", Toast.LENGTH_LONG).show();
+                Log.e("WEBIS",sonuc + "SONUC YANO");
             }
         });
 
 
     }
-AdapterView.OnItemSelectedListener secilenHarfGorevi = new AdapterView.OnItemSelectedListener() {
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-        EditText etDersAdi =(EditText) parent.findViewById(R.id.dersAdi);
-        EditText etDersKredi =(EditText)  parent.findViewById(R.id.kredi);
-        TextView txtDurum = (TextView) parent.findViewById(R.id.durum);
-        DersKontrol(view,txtDurum);
-
-        //etDersAdi.setText("asdasdasd"+  position);
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
-    }
-};
-    protected void DersKontrol(View view,TextView textView){
-        //Log.d("Ders Kontrol Çalıştı");
-    }
-
-/*TextWatcher yazilanMetinGorevi = new TextWatcher() {
-        @Override
-        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-        }
-
-        @Override
-        public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-        }
-
-        @Override
-        public void afterTextChanged(Editable s) {
-            s.
-        }
-    };*/
-    public void onAddField() {
-        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
-        final View rowView = inflater.inflate(R.layout.dersler, null);
-        // Add the new row before the add field button.
-        EditText etDersAdi = (EditText)rowView.findViewById(R.id.dersAdi);
-
-        EditText etDersKredi = (EditText)rowView.findViewById(R.id.kredi);
-        Spinner spnHaft  = (Spinner)rowView.findViewById(R.id.harf);
-        spnHaft.setOnItemSelectedListener(secilenHarfGorevi);
-        TextView tctDurum = (TextView)rowView.findViewById(R.id.durum);
-
-        parentLinearLayout.addView(rowView, parentLinearLayout.getChildCount() - 1);
-
-    }
-
-
 }
