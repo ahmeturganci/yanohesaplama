@@ -3,4 +3,12 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="white">#fff</color>
+    <color name="bacColor">#6E7783</color>
+    <color name="btnBacColor">#D8E6E7</color>
+    <color name="txtColor">#3E4348</color>
+    <color name="txtBacColor">#9DC3C1</color>
+
+
+
 </resources>

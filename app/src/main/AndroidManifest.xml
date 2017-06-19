@@ -10,7 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
-
         </activity>
         <activity android:name=".HesaplamaActivity" />
         <activity android:name=".StartActivity" android:theme="@style/Theme.AppCompat.NoActionBar">

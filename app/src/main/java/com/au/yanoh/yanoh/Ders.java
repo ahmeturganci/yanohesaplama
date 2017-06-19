@@ -90,9 +90,6 @@ public class Ders {
                katasayi = YanohUtils.HarfKatsayisiAl(harfler[position]);
                 hesapla();
             }
-
-
-
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
