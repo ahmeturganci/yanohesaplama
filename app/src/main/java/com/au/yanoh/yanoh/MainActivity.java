@@ -22,18 +22,25 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 int val = Integer.parseInt( etDS.getText().toString() );
-                Toast.makeText(MainActivity.this,
-                        "Dönemlik ders sayısı" + val + "alımdı.",
-                        Toast.LENGTH_LONG).show();
+                if(val >=11) {
+                    Toast.makeText(MainActivity.this,
+                            "Dönemlik ders sayısı 10 dan fazla olamaz.",
+                            Toast.LENGTH_LONG).show();
+                }else {
+                    Toast.makeText(MainActivity.this,
+                            "Dönemlik ders sayısı" + val + "alındı.",
+                            Toast.LENGTH_LONG).show();
 
-                Bundle extras = new Bundle();
-                extras.putInt("DersSay", val);
+                    Bundle extras = new Bundle();
+                    extras.putInt("DersSay", val);
 
 
-                Intent intent = new Intent();
-                intent.putExtras(extras);
-                intent.setClass(getApplicationContext(), HesaplamaActivity.class);
-                startActivity(intent);
+                    Intent intent = new Intent();
+                    intent.putExtras(extras);
+                    intent.setClass(getApplicationContext(), HesaplamaActivity.class);
+                    startActivity(intent);
+                }
+
             }
         });
     }

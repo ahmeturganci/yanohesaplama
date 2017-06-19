@@ -34,8 +34,6 @@ public class HesaplamaActivity extends AppCompatActivity {
         //Diğer activity den verileri aldık.
         Bundle veri = getIntent().getExtras();
         int gelenDS = veri.getInt("DersSay");
-        Toast.makeText(getApplicationContext(), gelenDS +" asd", Toast.LENGTH_SHORT).show();
-
         dersler = new LinkedList<Ders>();
         for(int l=0; l<gelenDS; l++){
             //sorunu şuraya birdaha yazsana kanka gitmediysen

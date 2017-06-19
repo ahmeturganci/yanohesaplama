@@ -2,6 +2,7 @@ package com.au.yanoh.yanoh;
 
 import android.content.ContentProvider;
 import android.content.Context;
+import android.graphics.Color;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
@@ -78,7 +79,7 @@ public class Ders {
         // d the new row before the add field button.
         this.dersAdi = (EditText)rowView.findViewById(R.id.dersAdi);
         this.dersKredi  = (EditText)rowView.findViewById(R.id.kredi);
-        Toast.makeText(context,dersKredi + "asd", Toast.LENGTH_SHORT).show();
+       // Toast.makeText(context,dersKredi + "asd", Toast.LENGTH_SHORT).show();
 
         this.dersHarf = (Spinner)rowView.findViewById(R.id.harf);
         this.dersDurum = (TextView)rowView.findViewById(R.id.durum);
@@ -100,25 +101,21 @@ public class Ders {
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
             }
-
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-                int temp= Integer.parseInt((Ders.this.dersKredi.getText()).toString());
+                /* int temp= Integer.parseInt((Ders.this.dersKredi.getText()).toString());
 
 
                 if(temp >=1 && temp <=10){
                     Ders.this.kredi = temp;
                     hesapla();
-                }
+                }*/
             }
 
             @Override
             public void afterTextChanged(Editable s) {
 
                 int temp= Integer.parseInt((Ders.this.dersKredi.getText()).toString());
-
-
                 if(temp >=1 && temp <=10){
                     Ders.this.kredi = temp;
                     hesapla();
@@ -136,10 +133,13 @@ public class Ders {
         if(katasayi<2){
             durumu=false;
             this.dersDurum.setText("Kaldı");
+            this.dersDurum.setTextColor(Color.RED);
 
         } else{
             durumu =true;
             this.dersDurum.setText("Geçti");
+            this.dersDurum.setTextColor(Color.GREEN);
+
         }
     }
 

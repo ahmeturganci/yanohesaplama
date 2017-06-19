@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">YANO HESALATÖR </string>
+    <string name="app_name">YANO Hesap</string>
     <string-array name="types">
         <item>AA</item>
         <item>BA</item>
