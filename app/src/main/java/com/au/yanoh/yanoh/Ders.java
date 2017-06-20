@@ -115,7 +115,10 @@ public class Ders {
             @Override
             public void afterTextChanged(Editable s) {
 
-                int temp= Integer.parseInt((Ders.this.dersKredi.getText()).toString());
+                int temp=0;
+                String kredi=getDersKredi().getText().toString().trim();
+                if(!kredi.equals(""))
+                    temp=Integer.parseInt(kredi);
                 if(temp >=1 && temp <=10){
                     Ders.this.kredi = temp;
                     hesapla();
